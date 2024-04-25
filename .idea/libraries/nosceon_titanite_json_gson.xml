@@ -1,0 +1,19 @@
+<component name="libraryTable">
+  <library name="nosceon.titanite.json.gson" type="repository">
+    <properties maven-id="org.nosceon.titanite:titanite-json-gson:1.2.1" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/nosceon/titanite/titanite-json-gson/1.2.1/titanite-json-gson-1.2.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/nosceon/titanite/titanite/1.2.1/titanite-1.2.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/io/netty/netty-codec-http/4.0.21.Final/netty-codec-http-4.0.21.Final.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/io/netty/netty-codec/4.0.21.Final/netty-codec-4.0.21.Final.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/io/netty/netty-transport/4.0.21.Final/netty-transport-4.0.21.Final.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/io/netty/netty-handler/4.0.21.Final/netty-handler-4.0.21.Final.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/io/netty/netty-buffer/4.0.21.Final/netty-buffer-4.0.21.Final.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/io/netty/netty-common/4.0.21.Final/netty-common-4.0.21.Final.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.7/slf4j-api-1.7.7.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.2.4/gson-2.2.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
