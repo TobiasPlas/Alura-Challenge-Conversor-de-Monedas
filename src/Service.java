@@ -1,5 +1,3 @@
-package com.AluraChallenge.model;
-
 import com.google.gson.JsonObject;
 
 public class Service {

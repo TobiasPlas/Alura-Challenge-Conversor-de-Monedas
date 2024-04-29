@@ -1,5 +1,3 @@
-import com.AluraChallenge.dto.MonedaDTO;
-import com.AluraChallenge.model.Service;
 import com.google.gson.*;
 
 import java.io.IOException;
@@ -23,7 +21,14 @@ public class Main {
         Service service = new Service();
 
         System.out.println("Bienvenido al Conversor de Monedas");
+
+
+
+
+       //Creamos un menu para que el usuario pueda interactuar y elegir el tipo de moneda a convertir
+
 while (eleccion!=9) {
+
     System.out.println("********************************************");
     System.out.println("Elija un tipo de moneda:");
 
@@ -58,6 +63,9 @@ while (eleccion!=9) {
             System.out.println("Opcion no valida");
             break;
     }
+
+    //obtenemos el archivo Json con los valores de dicha divisa
+
 if (correrAplicacion==true){
     HttpClient client=HttpClient.newHttpClient();
     HttpRequest request = HttpRequest.newBuilder()
@@ -70,21 +78,23 @@ if (correrAplicacion==true){
     String json= response.body();
 
     Gson gson=new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).create();
+
+    //transformamos el Json a objeto en java
+
    JsonObject jsonObject =gson.fromJson(json,JsonObject.class);
 
-   double precio = jsonObject.getAsJsonObject("conversion_rates").get("ARS").getAsDouble();
 
-    System.out.println(precio);
+//Elegimos la cantidad de dinero para hacer el cambio
+
     System.out.println("********************************************");
     System.out.println("Ingrese el monto que quiere convertir: ");
     monto =leer.nextInt();
 
 
+    //Repetimos el menu para elegir a que moneda hacer el cambio
 
-    System.out.println("");
     System.out.println("********************************************");
     System.out.println("Elija el tipo de moneda a convertir: ");
-
 
     System.out.println("1- USD(Dólar Estadounidense");
     System.out.println("2- ARS(peso argentino)");
@@ -93,6 +103,9 @@ if (correrAplicacion==true){
     System.out.println("5- CAD(Dolar canadiense)");
     System.out.println("9- Salir");
     monedaAConverir=leer.nextInt();
+
+    //En cada caso llamamos a la funcion desarrollada en la clase service pasandole los valores correspondientes
+
 
     switch (monedaAConverir){
         case 1:
@@ -116,19 +129,9 @@ if (correrAplicacion==true){
         default:
             System.out.println("Opcion no valida");
             break;
+            
     }
-
-
-
-
-
-
-
-
-
-
-            }
-        }
-
+    }
+    }
     }
 }
