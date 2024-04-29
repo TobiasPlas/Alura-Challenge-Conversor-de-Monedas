@@ -1,25 +1,26 @@
 import com.AluraChallenge.dto.MonedaDTO;
-import com.AluraChallenge.model.Moneda;
-import com.google.gson.FieldNamingPolicy;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.AluraChallenge.model.Service;
+import com.google.gson.*;
 
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.ArrayList;
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
         //Conversor de Monedas
+
         Boolean correrAplicacion=true;
         int eleccion=0;
         double monto=0;
         String monedaBase="";
-        String monedaAConverir;
-            Scanner leer=new Scanner(System.in);
+        int monedaAConverir=0;
+
+        Scanner leer=new Scanner(System.in);
+
+        Service service = new Service();
 
         System.out.println("Bienvenido al Conversor de Monedas");
 while (eleccion!=9) {
@@ -69,20 +70,53 @@ if (correrAplicacion==true){
     String json= response.body();
 
     Gson gson=new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).create();
-    MonedaDTO monedaLista= gson.fromJson(json, MonedaDTO.class);
-    System.out.println(json);
-    System.out.println(monedaLista);
+   JsonObject jsonObject =gson.fromJson(json,JsonObject.class);
 
-//    System.out.println("********************************************");
-//    System.out.println("Ingrese el monto que quiere convertir: ");
-//    monto =leer.nextInt();
+   double precio = jsonObject.getAsJsonObject("conversion_rates").get("ARS").getAsDouble();
+
+    System.out.println(precio);
+    System.out.println("********************************************");
+    System.out.println("Ingrese el monto que quiere convertir: ");
+    monto =leer.nextInt();
 
 
 
-//    System.out.println(moneda.g);
-//    System.out.println("********************************************");
-//    System.out.println("");
+    System.out.println("");
+    System.out.println("********************************************");
+    System.out.println("Elija el tipo de moneda a convertir: ");
 
+
+    System.out.println("1- USD(Dólar Estadounidense");
+    System.out.println("2- ARS(peso argentino)");
+    System.out.println("3- AUD(Dólar australiano)");
+    System.out.println("4- BRL(Real brasileño)");
+    System.out.println("5- CAD(Dolar canadiense)");
+    System.out.println("9- Salir");
+    monedaAConverir=leer.nextInt();
+
+    switch (monedaAConverir){
+        case 1:
+            System.out.println(service.conversorDeMoneda(jsonObject,monedaBase,"USD",monto));
+            break;
+        case 2:
+            System.out.println(service.conversorDeMoneda(jsonObject,monedaBase,"ARS",monto));
+            break;
+        case 3:
+            System.out.println(service.conversorDeMoneda(jsonObject,monedaBase,"AUD",monto));
+            break;
+        case 4:
+            System.out.println(service.conversorDeMoneda(jsonObject,monedaBase,"BRL",monto));
+            break;
+        case 5:
+            System.out.println(service.conversorDeMoneda(jsonObject,monedaBase,"CAD",monto));
+            break;
+        case 9:
+            correrAplicacion=false;
+            break;
+        default:
+            System.out.println("Opcion no valida");
+            break;
+    }
 
 
 

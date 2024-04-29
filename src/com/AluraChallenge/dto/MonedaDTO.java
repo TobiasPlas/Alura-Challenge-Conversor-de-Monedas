@@ -11,4 +11,20 @@ public record MonedaDTO() {
     @SerializedName("conversion_rates")
     public static List<Moneda> listaMonedas;
 
+
+
+    public Moneda getMoneda (int posicion){
+
+        Moneda moneda=listaMonedas.get(posicion);
+
+        return moneda;
+    }
+
+    public List<Moneda> getListaMonedas() {
+        return listaMonedas;
+    }
+
+    public void setListaMonedas(List<Moneda> listaMonedas) {
+        MonedaDTO.listaMonedas = listaMonedas;
+    }
 }
